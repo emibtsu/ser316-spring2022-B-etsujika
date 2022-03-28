@@ -9,13 +9,6 @@ import java.lang.reflect.Constructor;
 import java.util.Arrays;
 import java.util.Collection;
 
-import main.java.Cart;
-import main.java.Cart1;
-import main.java.Cart2;
-import main.java.Cart3;
-import main.java.Cart4;
-import main.java.Cart5;
-
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
@@ -50,7 +43,13 @@ public class BlackBoxGiven {
     // A sample Cart
 
     Cart cart1;
+    Cart cart2;
+    Cart cart3;
+    Cart cart4;
     double cart1Expected;
+    double cart2Expected;
+    double cart3Expected;
+    double cart4Expected;
 
 
     @org.junit.Before
@@ -69,14 +68,116 @@ public class BlackBoxGiven {
         for(int i = 0; i < 4; i++) {
             cart1.addItem(new Meat());
         }
-
+        
         cart1Expected = 70.2;
+        
+        //
+        
+        cart2 = createCart(40);
+
+        for(int i = 0; i < 4; i++) {
+            cart2.addItem(new Produce());
+        }
+
+        cart2Expected = 7.56;
+        
+     // cart created with an age 20 shopper
+        cart3 = createCart(20);
+        cart3Expected = 0;
+        
+        //cart created with alcohol and frozen food
+        cart4 = createCart(40);
+        for (int i = 0; i <=1; i++) {
+            cart4.addItem(new Alcohol());
+        }
+        for(int i = 0; i <= 1; i++) {
+            cart1.addItem(new FrozenFood());
+        }
+        cart4Expected = 17.28;
+        
     }
 
     // sample test
     @Test
     public void calcCostCart1() throws UnderAgeException {
         double amount = cart1.calcCost();
-        assertEquals(cart1Expected, amount, .01);
+        assertEquals(cart1Expected, amount, 0.01);
+    }
+    
+    @Test
+    public void amountSavedCart1() throws UnderAgeException {
+        double amount = cart1.Amount_saved();
+        assertEquals(-6, amount, 0.01);
+    }
+    
+    @Test
+    public void calcCostCart4() throws UnderAgeException {
+        double amount = cart4.calcCost();
+        assertEquals(cart4Expected, amount, 0.01);
+    }
+    
+    @Test
+    public void amountSavedCart4() throws UnderAgeException {
+        double amount = cart4.Amount_saved();
+        assertEquals(0, amount, 0.01);
+    }
+    
+    @Test
+    public void calcCostCart2() throws UnderAgeException {
+        double amount = cart2.calcCost();
+        assertEquals(cart2Expected, amount, 0.01);
+    }
+    
+    @Test
+    public void amountSavedCart2() throws UnderAgeException {
+        double amount = cart2.Amount_saved();
+        assertEquals(1, amount, 0.01);
+    }
+
+    @Test 
+    public void RemoveInvalidItem()
+    {
+    	Cart original = cart3;
+    	cart3.RemoveItem(new Produce());
+    	assertEquals(cart3, original);
+    }
+    @Test
+    public void RemoveAddedItem()
+    {
+    	Cart original = cart1;
+    	Product apple = new Produce();
+    	cart1.addItem(apple);
+    	cart1.RemoveItem(apple);
+    	assertEquals(cart1, original);
+    }
+    @Test (expected = UnderAgeException.class)
+    public void UnderAge() throws UnderAgeException
+    {
+    	cart3.addItem(new Alcohol());
+    	cart3.Amount_saved();
+    }
+    
+    @Test 
+    public void ColoradoTax()
+    {
+    	assertEquals(cart1.getTax(10, "CO"), .70 , .01);
+    }
+    
+    @Test 
+    public void CaliforniaTax()
+    {
+    	assertEquals(cart1.getTax(10, "CA"), .90 , .01);
+    }
+    
+    @Test 
+    public void NewYorkTax()
+    {
+    	assertEquals(cart1.getTax(10, "NY"), .70 , .01);
+    }
+    
+    @Test 
+    public void DefaultTax()
+    {
+    	assertEquals(cart1.getTax(10, "WA"), 10 , .01);
     }
 }
