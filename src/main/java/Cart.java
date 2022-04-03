@@ -98,8 +98,8 @@ public class Cart {
         return newTotal;
     }
 
-    public void addItem(Product np) {
-      cart.add(np);
+    public void addItem(Product productToAdd) {
+      cart.add(productToAdd);
     }
 
     public boolean RemoveItem(Product productToRemove)
