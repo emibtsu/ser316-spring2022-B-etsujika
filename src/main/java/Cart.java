@@ -68,7 +68,7 @@ public class Cart {
                 dairyCounter++;
 
             if (alcoholCounter >= 1 && frozenFoodCounter >= 1) {
-                 costAfterSavings = costAfterSavings + 3;
+                 costAfterSavings = costAfterSavings - 3;
                  alcoholCounter--;
                  frozenFoodCounter--;
             }
