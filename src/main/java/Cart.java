@@ -3,6 +3,8 @@ package main.java;
 import java.util.ArrayList;
 import java.util.List;
 
+import junit.framework.Assert;
+
 public class Cart {
 
     protected int userAge;
@@ -93,7 +95,7 @@ public class Cart {
                 newTotal = totalBT * .07;
                 break;
             default:
-                return totalBT;
+                Assert.fail(twoLetterUSStateAbbreviation + " is not in the System for tax!");
         }
         return newTotal;
     }
