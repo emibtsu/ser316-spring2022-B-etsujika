@@ -10,7 +10,6 @@ public class Cart {
 	protected int userAge;
 	public List<Product> cart;
 	public int cartStorage;
-
 	/**
 	 * Calculates the final cost after all savings and tax has been applied. Also checks
 	 * that the user is of age to purchase alcohol if it is in their cart at checkout. Sales tax is always AZ tax.
@@ -59,8 +58,8 @@ public class Cart {
 
 			if (cart.get(i).getClass().toString().equals(Produce.class.toString())) {
 				produce_counter++;
-
-				if (produce_counter >= 3) {
+// everytime 3 are purchased it takes off a dollar, not for every after 3 produce
+				if (produce_counter % 3 == 0) {
 					costAfterSavings -= 1;
 					produce_counter = 0;
 				}
@@ -74,7 +73,7 @@ public class Cart {
 			else if (cart.get(i).getClass().toString().equals(FrozenFood.class.toString())) {
 				frozenFoodCounter++;
 			}
-			else if (cart.get(i).getClass().toString().equals(FrozenFood.class.toString()))
+			else if (cart.get(i).getClass().toString().equals(Dairy.class.toString()))
 			{
 				dairyCounter++;
 			}
@@ -90,7 +89,7 @@ public class Cart {
 
 	// Gets the tax based on state and the total
 	@SuppressWarnings("deprecation")
-	public double getTax(double totalBT, String twoLetterUSStateAbbreviation) {
+	public double getTax(double totalBT, String twoLetterUSStateAbbreviation) throws Exception {
 		double newTotal = 0;
 		switch (twoLetterUSStateAbbreviation) {
 		case "AZ":
@@ -105,7 +104,7 @@ public class Cart {
 			newTotal = totalBT * .07;
 			break;
 		default:
-			Assert.fail(twoLetterUSStateAbbreviation + " is not in the System for tax!");
+			throw new Exception("Incorrect state " + twoLetterUSStateAbbreviation );
 		}
 		return newTotal;
 	}
@@ -116,12 +115,10 @@ public class Cart {
 
 	public boolean RemoveItem(Product productToRemove)
 	{
-		boolean test = false;
 		for (int i = 0; i < cart.size(); i++) {
-			if (cart.get(i) == productToRemove) {
+			if (cart.get(i).equals(productToRemove)) {
 				cart.remove(i);
-				test = true;
-				return test;
+				return true;
 			}
 		}
 		return false;
