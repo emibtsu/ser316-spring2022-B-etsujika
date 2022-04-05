@@ -4,6 +4,7 @@ import main.java.Alcohol;
 import main.java.Cart;
 import main.java.Dairy;
 import main.java.FrozenFood;
+import main.java.Meat;
 import main.java.Produce;
 import main.java.UnderAgeException;
 
@@ -134,6 +135,13 @@ public class WhiteBoxGiven {
     	Cart cart = new Cart(40);
     	cart.addItem(new Dairy());
     	assertEquals(cart.calcCost(), 3.0, 0.01);
+    }
+    
+    @Test
+    public void buyMeat() throws UnderAgeException {
+    	Cart cart = new Cart(40);
+    	cart.addItem(new Meat());
+    	assertEquals(cart.calcCost(), 10.0, 0.01);
     }
     
     @Test 
