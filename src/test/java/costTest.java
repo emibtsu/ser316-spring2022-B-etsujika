@@ -220,32 +220,31 @@ public class costTest {
 	}
 
 	@Test 
-	public void ColoradoTax()
+	public void ColoradoTax()throws Exception 
 	{
 		assertEquals(cart1.getTax(10, "CO"), .70 , .01);
 	}
 
 	@Test 
-	public void CaliforniaTax()
+	public void CaliforniaTax()throws Exception 
 	{
 		assertEquals(cart1.getTax(10, "CA"), .90 , .01);
 	}
 
 	@Test 
-	public void NewYorkTax()
+	public void NewYorkTax() throws Exception 
 	{
 		assertEquals(cart1.getTax(10, "NY"), .70 , .01);
 	}
 
 	@Test 
-	public void DefaultTax()
+	public void DefaultTax()throws Exception  
 	{
 		try {
 			assertEquals(cart1.getTax(10, "WA"), 10 , .01);
 		}
-		catch(AssertionFailedError noTaxForDefault)
+		catch(Exception noTaxForDefault)
 		{
-			System.out.println(noTaxForDefault);
 		}
 	}
 
