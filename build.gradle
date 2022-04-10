@@ -20,6 +20,9 @@ dependencies {
     compile "junit:junit:4.12"
     compile files('cls/')
 }
+test {
+exclude '**/BlackBoxGiven.class'
+}
 
 ///////////////////////////////////////////////////////////////////////
 // Configure Checkstyle
@@ -57,4 +60,4 @@ dependencies {
 //     ignoreFailures = true
 //     showProgress = true
 //     effort = 'max'
-// }
+//}
