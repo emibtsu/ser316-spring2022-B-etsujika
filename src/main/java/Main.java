@@ -1,6 +1,11 @@
 package main.java;
 
 public class Main {
+	/** Main method for class.
+	 * 
+	 * @param args regular main input.
+	 * @throws UnderAgeException exception for underage.
+	 */
     public static void main(String[] args) throws UnderAgeException {
 
         // Instantiating some products
@@ -29,7 +34,6 @@ public class Main {
         cart.addItem(chicken);
         cart.addItem(milk);
 
-        System.out.println(cart.calcCost());
-        System.out.println(cart.Amount_saved());
+
     }
 }
