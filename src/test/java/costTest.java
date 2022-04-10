@@ -194,7 +194,7 @@ public class costTest {
 	public void RemoveInvalidItem()
 	{
 		Cart original = cart3;
-		cart3.RemoveItem(new Produce());
+		cart3.removeItem(new Produce());
 		assertEquals(cart3, original);
 	}
 	@Test
@@ -203,7 +203,7 @@ public class costTest {
 		Cart original = cart1;
 		Product apple = new Produce();
 		cart1.addItem(apple);
-		cart1.RemoveItem(apple);
+		cart1.removeItem(apple);
 		assertEquals(cart1, original);
 	}
 	@Test
@@ -251,6 +251,6 @@ public class costTest {
 	@Test 
 	public void emptyCartEmpty()
 	{
-		cart3.RemoveItem(new Produce());
+		cart3.removeItem(new Produce());
 	}
 }

@@ -1,10 +1,10 @@
 package main.java;
 
 public class Main {
-	/** Method is main class 
+	/** Main method for class.
 	 * 
-	 * @param args : regular param for main
-	 * @throws UnderAgeException : exception to throw under age
+	 * @param args regular main input.
+	 * @throws UnderAgeException exception for underage.
 	 */
     public static void main(String[] args) throws UnderAgeException {
 

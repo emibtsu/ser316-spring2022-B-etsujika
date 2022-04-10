@@ -193,7 +193,7 @@ public class WhiteBoxGiven {
     	Cart original = cart;
     	Produce Apple = new Produce();
     	cart.addItem(Apple);
-    	Assert.assertTrue(cart.RemoveItem(Apple));
+    	Assert.assertTrue(cart.removeItem(Apple));
     	
     }
     
@@ -205,7 +205,7 @@ public class WhiteBoxGiven {
     	Produce Apple = new Produce();
     	Produce Pear = new Produce();
     	cart.addItem(new Produce());
-    	Assert.assertFalse(cart.RemoveItem(Pear));
+    	Assert.assertFalse(cart.removeItem(Pear));
     }
     
 }
