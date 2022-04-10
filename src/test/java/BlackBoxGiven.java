@@ -133,7 +133,7 @@ public class BlackBoxGiven {
     
     @Test
     public void amountSavedCart1() throws UnderAgeException {
-        double amount = cart1.Amount_saved();
+        double amount = cart1.amountSaved();
         assertEquals(-6, amount, 0.01);
     }
     
@@ -157,7 +157,7 @@ public class BlackBoxGiven {
     
     @Test
     public void amountSavedCart4() throws UnderAgeException {
-        double amount = cart4.Amount_saved();
+        double amount = cart4.amountSaved();
         assertEquals(0, amount, 0.01);
     }
     
@@ -169,18 +169,18 @@ public class BlackBoxGiven {
     
     @Test
     public void amountSavedCart2() throws UnderAgeException {
-        double amount = cart2.Amount_saved();
+        double amount = cart2.amountSaved();
         assertEquals(1, amount, 0.01);
     }
     
     @Test (expected = UnderAgeException.class)
     public void amountSavedCart5() throws UnderAgeException {
-        double amount = cart5.Amount_saved();
+        double amount = cart5.amountSaved();
     }
 
     @Test
     public void amountSavedCart6() throws UnderAgeException {
-        double amount = cart6.Amount_saved();
+        double amount = cart6.amountSaved();
         assertEquals(-2, amount, 0.01);
     }
     
@@ -191,48 +191,48 @@ public class BlackBoxGiven {
     }
     
     @Test 
-    public void RemoveInvalidItem()
+    public void removeInvalidItem()
     {
     	Cart original = cart3;
-    	cart3.RemoveItem(new Produce());
+    	cart3.removeItem(new Produce());
     	assertEquals(cart3, original);
     }
     @Test
-    public void RemoveAddedItem()
+    public void removeAddedItem()
     {
     	Cart original = cart1;
     	Product apple = new Produce();
     	cart1.addItem(apple);
-    	cart1.RemoveItem(apple);
+    	cart1.removeItem(apple);
     	assertEquals(cart1, original);
     }
     @Test (expected = UnderAgeException.class)
-    public void UnderAge() throws UnderAgeException
+    public void underAge() throws UnderAgeException
     {
     	cart3.addItem(new Alcohol());
-    	cart3.Amount_saved();
+    	cart3.amountSaved();
     }
     
     @Test 
-    public void ColoradoTax()
+    public void coloradoTax() throws Exception
     {
     	assertEquals(cart1.getTax(10, "CO"), .70 , .01);
     }
     
     @Test 
-    public void CaliforniaTax()
+    public void californiaTax() throws Exception
     {
     	assertEquals(cart1.getTax(10, "CA"), .90 , .01);
     }
     
     @Test 
-    public void NewYorkTax()
+    public void newYorkTax() throws Exception
     {
     	assertEquals(cart1.getTax(10, "NY"), .70 , .01);
     }
     
     @Test 
-    public void DefaultTax()
+    public void defaultTax() throws Exception
     {
     	assertEquals(cart1.getTax(10, "WA"), 10 , .01);
     }
@@ -240,6 +240,6 @@ public class BlackBoxGiven {
     @Test 
     public void emptyCartEmpty()
     {
-    	cart3.RemoveItem(new Produce());
+    	cart3.removeItem(new Produce());
     }
 }
