@@ -14,15 +14,14 @@ mainClassName = 'main.java.Main'
 repositories {
     jcenter()
 }
-test {
-exclude ’**/BlackBoxGiven.class’
-}
-
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
     compile "junit:junit:4.12"
     compile files('cls/')
+}
+test {
+exclude '**/BlackBoxGiven.class'
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -61,4 +60,4 @@ dependencies {
 //     ignoreFailures = true
 //     showProgress = true
 //     effort = 'max'
-// }
+//}

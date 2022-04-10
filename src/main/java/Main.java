@@ -29,7 +29,6 @@ public class Main {
         cart.addItem(chicken);
         cart.addItem(milk);
 
-        System.out.println(cart.calcCost());
-        System.out.println(cart.amountSaved());
+
     }
 }
