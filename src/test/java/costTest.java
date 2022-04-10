@@ -109,8 +109,7 @@ public class costTest {
 		cart5Expected = 69;
 
 		cart6 = createCart(30);
-		for(int i=0; i<=2; i++)
-		{
+		for(int i=0; i<=2; i++){
 			cart6.addItem(new Produce());
 		}
 		cart6.addItem(new Alcohol());
@@ -146,8 +145,7 @@ public class costTest {
 			double amount = cart5.calcCost();
 			assertEquals(cart5Expected, amount, 0.01);
 		}
-		catch(UnderAgeException tooYoung)
-		{
+		catch(UnderAgeException tooYoung){
 			System.out.println(tooYoung);
 		}
 	}
@@ -198,8 +196,7 @@ public class costTest {
 		assertEquals(cart3, original);
 	}
 	@Test
-	public void RemoveAddedItem()
-	{
+	public void RemoveAddedItem(){
 		Cart original = cart1;
 		Product apple = new Produce();
 		cart1.addItem(apple);
@@ -207,50 +204,42 @@ public class costTest {
 		assertEquals(cart1, original);
 	}
 	@Test
-	public void UnderAge() throws UnderAgeException
-	{
+	public void UnderAge() throws UnderAgeException{
 		try {
 		cart3.addItem(new Alcohol());
 		cart3.amountSaved();
 		}
-		catch(UnderAgeException tooYoung)
-		{
+		catch(UnderAgeException tooYoung){
 			System.out.println(tooYoung);
 		}
 	}
 
 	@Test 
-	public void ColoradoTax()throws Exception 
-	{
+	public void ColoradoTax()throws Exception {
 		assertEquals(cart1.getTax(10, "CO"), .70 , .01);
 	}
 
 	@Test 
-	public void CaliforniaTax()throws Exception 
-	{
+	public void CaliforniaTax()throws Exception {
 		assertEquals(cart1.getTax(10, "CA"), .90 , .01);
 	}
 
 	@Test 
-	public void NewYorkTax() throws Exception 
-	{
-		assertEquals(cart1.getTax(10, "NY"), .70 , .01);
+	public void NewYorkTax() throws Exception {
+		assertEquals(cart1.getTax(10, "NY"), 1.0 , .01);
 	}
 
 	@Test 
-	public void DefaultTax()throws Exception  
-	{
+	public void DefaultTax()throws Exception {
 		try {
 			assertEquals(cart1.getTax(10, "WA"), 10 , .01);
 		}
-		catch(Exception noTaxForDefault)
-		{
+		catch(Exception noTaxForDefault){
 		}
 	}
 
 	@Test 
-	public void emptyCartEmpty()
-	{
+	public void emptyCartEmpty(){
 		cart3.removeItem(new Produce());
 	}
 }
