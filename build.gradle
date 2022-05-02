@@ -44,6 +44,14 @@ apply plugin: 'checkstyle'
     toolVersion = "8.8"
  }
 
+apply plugin: "pmd"
+pmd {
+  ignoreFailures = true 
+  sourceSets = [sourceSets.main]
+  reportsDir = file("$project.buildDir/reports/pmd")
+  ruleSets = []
+  ruleSetConfig = resources.text.fromFile('ruleset.xml')
+}
 
 ///////////////////////////////////////////////////////////////////////
 // Configure SpotBugs
